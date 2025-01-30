@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "10th-grade-final-project"
+version = "0.1.0"
+description = ""
+authors = ["leterDieu <leterdieu@proton.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+django = "^5.1.5"
+psycopg2 = "^2.9.9"
+gunicorn = "^23.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
