@@ -1,14 +1,25 @@
-from django.contrib.auth.models import Group, User
-from rest_framework import permissions, viewsets
+from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from api.models import *
+from api.serializers import *
 
-from tutorial.quickstart.serializers import GroupSerializer, UserSerializer
 
-from ..training.models import *
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+class ExamViewSet(ModelViewSet):
+    queryset = Exam.objects.all()
+    serializer_class = ExamSerializer
+
+class QuestionViewSet(ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+class AnswerViewSet(ModelViewSet):
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
+
+class UserQuestionResultViewSet(ModelViewSet):
+    queryset = UserQuestionResult.objects.all()
+    serializer_class = UserQuestionResultSerializer
