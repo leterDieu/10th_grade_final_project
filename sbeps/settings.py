@@ -32,6 +32,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     'api.apps.ApiConfig',
     'rest_framework',
     'training.apps.TrainingConfig',
