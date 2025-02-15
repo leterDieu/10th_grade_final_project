@@ -43,7 +43,7 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 
 COPY . .
 
-# RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
 RUN chown -R djangouser:djangouser $APP_HOME
 
