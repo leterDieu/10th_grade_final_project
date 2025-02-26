@@ -1,6 +1,11 @@
 from rest_framework import serializers
-from .models import *
-from django.contrib.auth.models import User
+from api.models import (
+    User,
+    Exam,
+    Question,
+    Answer,
+    UserQuestionResult
+)
 
 
 class UserSerializer(serializers.ModelSerializer):
