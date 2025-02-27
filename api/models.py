@@ -31,4 +31,4 @@ class UserQuestionResult(models.Model):
     answer_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user
+        return 'blank'

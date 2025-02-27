@@ -8,6 +8,7 @@ from api.views import (
     UserQuestionResultViewSet,
     CreateUserView,
     BlacklistRefreshView,
+    GetHardestUserExam
 )
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -20,7 +21,7 @@ router.register('user', UserViewSet, basename='user')
 router.register('exam', ExamViewSet, basename='exam')
 router.register('question', QuestionViewSet, basename='question')
 router.register('answer', AnswerViewSet, basename='answer')
-router.register('user_question_result', UserQuestionResultViewSet, basename='user_question_result')
+router.register('userquestionresult', UserQuestionResultViewSet, basename='userquestionresult')
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('register/', CreateUserView.as_view(), name='create_user'),
     path('logout/', BlacklistRefreshView.as_view(), name='token_blacklist'),
+    path('hardest_exam/<int:user_id>', GetHardestUserExam.as_view(), name='hardest_exam')
 ]
