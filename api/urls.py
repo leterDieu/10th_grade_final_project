@@ -31,6 +31,6 @@ urlpatterns = [
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('register/', CreateUserView.as_view(), name='create_user'),
     path('logout/', BlacklistRefreshView.as_view(), name='token_blacklist'),
-    path('hardest_user_exam/<int:user_id>', HardestUserExamView.as_view(), name='hardest_user_exam'),
-    path('hardest_overall_exam', HardestOverallExamView.as_view(), name='hardest_overall_exam'),
+    path('hardest_user_exam/<int:user_id>/', HardestUserExamView.as_view(), name='hardest_user_exam'),
+    path('hardest_overall_exam/', HardestOverallExamView.as_view(), name='hardest_overall_exam'),
 ]

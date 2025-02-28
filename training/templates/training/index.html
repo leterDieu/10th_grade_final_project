@@ -1,7 +1,21 @@
-{% if exams %}
+{% if exam_stats_by_accuracy_readable %}
 <ul>
-    {% for exam in exams %}
-    <li><a href="/training/exam/{{ exam.id }}/">{{ exam.name }}</a></li>
+    <b>Top {{ top_n }} exams by accuracy</b>
+    {% for exam in exam_stats_by_accuracy_readable %}
+    <li>
+        {{ exam.number }}:
+        <a href="/api/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        ({{ exam.accuracy }}% accuracy)
+    </li>
+    {% endfor %}
+
+    <b>Top {{ top_n }} exams by popularity</b>
+    {% for exam in exam_stats_by_popularity_readable %}
+    <li>
+        {{ exam.number }}:
+        <a href="/api/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        ({{ exam.answers }} answers)
+    </li>
     {% endfor %}
 </ul>
 {% else %}
