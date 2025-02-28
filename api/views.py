@@ -62,9 +62,28 @@ class BlacklistRefreshView(APIView):
         token.blacklist()
         return Response("Success")
 
-class GetHardestUserExam(View):
+class HardestUserExamView(View):
     def get(self, request, user_id):
         uqr = UserQuestionResult.objects.filter(user_id=user_id).\
+        select_related('answer')
+        as_int = uqr.annotate(is_correct_int = Cast('answer__is_correct', IntegerField()))
+        accs_lists = {}
+        for acc in as_int:
+            if acc.exam_id not in accs_lists:
+                accs_lists[acc.exam_id] = []
+            accs_lists[acc.exam_id].append(acc.is_correct_int)
+
+        accs = {}
+        for acc_exam_id, acc_accs in accs_lists.items():
+            accs[acc_exam_id] = sum(acc_accs) / len(acc_accs)
+
+        accs_sorted = sorted(accs.items(), key=lambda item: item[1])
+
+        return HttpResponse(accs_sorted[0][0])
+
+class HardestOverallExamView(View):
+    def get(self, request):
+        uqr = UserQuestionResult.objects.all().\
         select_related('answer')
         as_int = uqr.annotate(is_correct_int = Cast('answer__is_correct', IntegerField()))
         accs_lists = {}
