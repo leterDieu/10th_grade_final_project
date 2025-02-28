@@ -80,7 +80,12 @@ def exam_content(request, exam_id):
 
     question_object = random.choice(question_objects)
 
-    # add dependecy from UserQuestionResult
+    # add dependency from UserQuestionResult
     # add form-like display for Answers
 
-    return HttpResponse(question_object)
+    template = loader.get_template("training/exam_content.html")
+    context = {
+        'text': question_object.text,
+    }
+
+    return HttpResponse(template.render(context, request))
