@@ -48,6 +48,10 @@ class UserQuestionResultViewSet(ModelViewSet):
     queryset = UserQuestionResult.objects.all()
     serializer_class = UserQuestionResultSerializer
 
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+
 class CreateUserView(CreateAPIView):
     model = User
     permission_classes = [

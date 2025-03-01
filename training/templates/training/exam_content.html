@@ -1,0 +1,6 @@
+{% for form in forms %}
+<form action="{% url 'userquestionresult' form.field.value %}">
+    {% csrf_token %} {{ form }}
+</form>
+<input type="submit" value="Submit" />
+{% endfor %}

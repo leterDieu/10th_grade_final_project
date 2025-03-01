@@ -1,6 +1,6 @@
 from django import template
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.models import User
 from api.models import (
@@ -12,6 +12,8 @@ from api.models import (
 from django.db.models.functions import Cast
 from django.db.models import IntegerField
 import random
+from training.forms import QuestionForm
+from django.forms import formset_factory
 
 
 def index(request, top_n: int = 5):
@@ -69,23 +71,18 @@ def exam(request, exam_id):
     context = {
         'name': exam_object.name,
         'description': exam_object.description,
-        'exam_id': exam_id,
     }
 
     return HttpResponse(template.render(context, request))
 
 def exam_content(request, exam_id):
-    question_objects = Question.objects.all()\
-    .select_related('exam').filter(exam_id=exam_id)
+    question_objects = Question.objects.filter(exam_id=exam_id)
 
-    question_object = random.choice(question_objects)
-
-    # add dependency from UserQuestionResult
-    # add form-like display for Answers
+    forms = [QuestionForm(question.id) for question in question_objects]
 
     template = loader.get_template("training/exam_content.html")
     context = {
-        'text': question_object.text,
+        'forms': forms,
     }
 
     return HttpResponse(template.render(context, request))
