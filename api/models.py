@@ -23,11 +23,16 @@ class Answer(models.Model):
     def __str__(self):
         return self.text
 
+class ResultSession(models.Model):
+    def __str__(self):
+        return 'blank'
+
 class UserQuestionResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    result_session = models.ForeignKey(ResultSession, on_delete=models.CASCADE)
     answer_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

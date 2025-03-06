@@ -4,6 +4,7 @@ from api.models import (
     Exam,
     Question,
     Answer,
+    ResultSession,
     UserQuestionResult
 )
 
@@ -38,6 +39,11 @@ class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = ['id', 'question', 'text', 'is_correct']
+
+class ResultSessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResultSession
+        fields = ['id']
 
 class UserQuestionResultSerializer(serializers.ModelSerializer):
     class Meta:

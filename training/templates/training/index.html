@@ -4,7 +4,7 @@
     {% for exam in exam_stats_by_accuracy_readable %}
     <li>
         {{ exam.number }}:
-        <a href="/api/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
         ({{ exam.accuracy }}% accuracy)
     </li>
     {% endfor %}

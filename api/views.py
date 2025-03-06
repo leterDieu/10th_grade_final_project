@@ -1,4 +1,3 @@
-import requests
 from django.shortcuts import render
 from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
@@ -17,6 +16,7 @@ from api.models import (
     Exam,
     Question,
     Answer,
+    ResultSession,
     UserQuestionResult
 )
 from api.serializers import (
@@ -24,6 +24,7 @@ from api.serializers import (
     ExamSerializer,
     QuestionSerializer,
     AnswerSerializer,
+    ResultSessionSerializer,
     UserQuestionResultSerializer
 )
 
@@ -43,6 +44,10 @@ class QuestionViewSet(ModelViewSet):
 class AnswerViewSet(ModelViewSet):
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
+
+class ResultSessionViewSet(ModelViewSet):
+    queryset = ResultSession.objects.all()
+    serializer_class = ResultSessionSerializer
 
 class UserQuestionResultViewSet(ModelViewSet):
     queryset = UserQuestionResult.objects.all()

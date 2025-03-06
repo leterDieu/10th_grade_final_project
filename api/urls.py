@@ -1,6 +1,8 @@
+from django.apps.config import APPS_MODULE_NAME
 from django.urls import path, include
 from rest_framework import routers
 from api.views import (
+    ResultSessionViewSet,
     UserViewSet,
     ExamViewSet,
     QuestionViewSet,
@@ -17,11 +19,14 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
+app_name = 'api'
+
 router = routers.DefaultRouter()
 router.register('user', UserViewSet, basename='user')
 router.register('exam', ExamViewSet, basename='exam')
 router.register('question', QuestionViewSet, basename='question')
 router.register('answer', AnswerViewSet, basename='answer')
+router.register('resultsession', ResultSessionViewSet, basename='resultsession')
 router.register('userquestionresult', UserQuestionResultViewSet, basename='userquestionresult')
 
 urlpatterns = [
