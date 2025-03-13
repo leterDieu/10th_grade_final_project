@@ -1,6 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'training/style.css' %}" />
+
 {% if exam_stats_overall_accuracy %}
 <ul>
-    <b>Top {{ top_n }} exams by accuracy overall</b>
+    <b class="b">Top {{ top_n }} exams by accuracy overall</b>
     {% for exam in exam_stats_overall_accuracy %}
     <li>
         {{ exam.number }}:

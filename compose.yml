@@ -33,7 +33,7 @@ services:
       - .env
 
     volumes:
-      - app_static:/app/static
+      - app_static:/app/staticfiles
   nginx:
     image: "nginx:latest"
     volumes:
