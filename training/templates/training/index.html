@@ -1,7 +1,7 @@
-{% if exam_stats_by_accuracy_readable %}
+{% if exam_stats_overall_accuracy %}
 <ul>
-    <b>Top {{ top_n }} exams by accuracy</b>
-    {% for exam in exam_stats_by_accuracy_readable %}
+    <b>Top {{ top_n }} exams by accuracy overall</b>
+    {% for exam in exam_stats_overall_accuracy %}
     <li>
         {{ exam.number }}:
         <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
@@ -9,12 +9,38 @@
     </li>
     {% endfor %}
 
-    <b>Top {{ top_n }} exams by popularity</b>
-    {% for exam in exam_stats_by_popularity_readable %}
+    <b>Top {{ top_n }} exams by popularity overall</b>
+    {% for exam in exam_stats_overall_popularity %}
     <li>
         {{ exam.number }}:
-        <a href="/api/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
         ({{ exam.answers }} answers)
+    </li>
+    {% endfor %}
+
+    <b>Top {{ top_n }} exams by accuracy personal</b>
+    {% for exam in exam_stats_users_accuracy %}
+    <li>
+        {{ exam.number }}:
+        <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        ({{ exam.accuracy }}% accuracy)
+    </li>
+    {% endfor %}
+
+    <b>Top {{ top_n }} exams by popularity personal</b>
+    {% for exam in exam_stats_users_popularity %}
+    <li>
+        {{ exam.number }}:
+        <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        ({{ exam.answers }} answers)
+    </li>
+    {% endfor %}
+
+    <b>{{ latest_n }} latest exams</b>
+    {% for exam in latest_exams %}
+    <li>
+        <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
+        (published on {{ exam.pud_date }})
     </li>
     {% endfor %}
 </ul>

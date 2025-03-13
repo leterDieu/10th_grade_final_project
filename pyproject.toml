@@ -15,6 +15,7 @@ django-extensions = "^3.2.3"
 pydotplus = "^2.0.2"
 djangorestframework-simplejwt = "^5.4.0"
 rest-framework-simplejwt = "^0.0.2"
+pandas = "^2.2.3"
 
 [tool.poetry.group.dev.dependencies]
 pydotplus = "^2.0.2"
