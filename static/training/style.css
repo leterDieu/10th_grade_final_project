@@ -1,4 +1,9 @@
-b {
-    color: green;
-    text-color: red;
+.dark-theme {
+    color: white;
+    background-color: black;
+}
+
+.light-theme {
+    color: black;
+    background-color: white;
 }

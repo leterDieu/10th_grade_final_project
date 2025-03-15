@@ -5,7 +5,8 @@ from api.models import (
     Question,
     Answer,
     ResultSession,
-    UserQuestionResult
+    UserQuestionResult,
+    UserPreference
 )
 
 
@@ -29,6 +30,11 @@ class ExamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exam
         fields = ['id', 'name', 'description']
+
+class UserPreferenceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPreference
+        fields = ['id', 'user', 'theme_is_light']
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:

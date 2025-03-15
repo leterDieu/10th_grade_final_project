@@ -12,6 +12,7 @@ from api.views import (
     BlacklistRefreshView,
     HardestUserExamView,
     HardestOverallExamView,
+    UserPreferenceViewSet
 )
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -28,6 +29,7 @@ router.register('question', QuestionViewSet, basename='question')
 router.register('answer', AnswerViewSet, basename='answer')
 router.register('resultsession', ResultSessionViewSet, basename='resultsession')
 router.register('userquestionresult', UserQuestionResultViewSet, basename='userquestionresult')
+router.register('userpreference', UserPreferenceViewSet, basename='userpreference')
 
 urlpatterns = [
     path('', include(router.urls)),

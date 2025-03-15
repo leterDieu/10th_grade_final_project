@@ -1,0 +1,17 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    <head>
+        <title>SBEPS project</title>
+        <link rel="stylesheet" href="{% static 'training/style.css' %}" />
+    </head>
+
+    {% if theme_is_light %}
+    <body class="light-theme">
+    {% else %}
+    <body class="dark-theme">
+    {% endif %}
+        {% block content %}{% endblock content %}
+    </body>
+</html>

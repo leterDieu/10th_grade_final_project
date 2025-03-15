@@ -17,7 +17,8 @@ from api.models import (
     Question,
     Answer,
     ResultSession,
-    UserQuestionResult
+    UserQuestionResult,
+    UserPreference
 )
 from api.serializers import (
     UserSerializer,
@@ -25,13 +26,18 @@ from api.serializers import (
     QuestionSerializer,
     AnswerSerializer,
     ResultSessionSerializer,
-    UserQuestionResultSerializer
+    UserQuestionResultSerializer,
+    UserPreferenceSerializer
 )
 
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class UserPreferenceViewSet(ModelViewSet):
+    queryset = UserPreference.objects.all()
+    serializer_class = UserPreferenceSerializer
 
 class ExamViewSet(ModelViewSet):
     queryset = Exam.objects.all()

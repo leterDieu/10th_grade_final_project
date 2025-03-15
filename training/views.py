@@ -9,7 +9,8 @@ from api.models import (
     Question,
     Answer,
     ResultSession,
-    UserQuestionResult
+    UserQuestionResult,
+    UserPreference
 )
 from django.db.models.functions import Cast
 from django.db.models import IntegerField
@@ -60,12 +61,15 @@ def get_exam_stats(uqr: UserQuestionResult) -> dict[str, list[dict[str, Any]]]:
         'popularity': exam_stats_by_popularity_readable,
     }
 
+def theme_is_light(user):
+    return UserPreference.objects.get(user=user).theme_is_light
+
 def index(request, top_n: int = 5, latest_n: int = 10):
     uqr = UserQuestionResult.objects.all().\
     select_related('answer').select_related('exam')
     uqr = uqr.annotate(is_correct_int = Cast('answer__is_correct', IntegerField()))
 
-    uqr_users = UserQuestionResult.objects.filter(user=request.user).\
+    uqr_users = UserQuestionResult.objects.filter(user=request.user.id).\
     select_related('answer').select_related('exam')
     uqr_users = uqr_users.annotate(is_correct_int = Cast('answer__is_correct', IntegerField()))
 
@@ -82,7 +86,8 @@ def index(request, top_n: int = 5, latest_n: int = 10):
         'exam_stats_users_popularity': exam_stats_users['popularity'][:top_n],
         'top_n': top_n,
         'latest_exams': latest_exams[::-1],
-        'latest_n': latest_n
+        'latest_n': latest_n,
+        'theme_is_light': theme_is_light(request.user)
     }
 
     return HttpResponse(template.render(context, request))
@@ -94,6 +99,7 @@ def exam(request, exam_id):
     context = {
         'name': exam_object.name,
         'description': exam_object.description,
+        'theme_is_light': theme_is_light(request.user)
     }
 
     return HttpResponse(template.render(context, request))
@@ -154,6 +160,7 @@ def exam_content(request, exam_id):
         template = loader.get_template("training/exam_content.html")
         context = {
             'formset': formset,
+            'theme_is_light': theme_is_light(request.user)
         }
 
         return HttpResponse(template.render(context, request))
@@ -197,7 +204,8 @@ def exam_result(request, result_session_id):
         context = {
             'df': df,
             'df_total': df_total,
-            'exam_id': uqr_objects[0].exam.id
+            'exam_id': uqr_objects[0].exam.id,
+            'theme_is_light': theme_is_light(request.user)
         }
 
         return HttpResponse(template.render(context, request))

@@ -1,3 +1,4 @@
+{% extends 'base.html' %} {% block content %}
 <table>
     <tr>
         {% for col in df.columns %}
@@ -35,3 +36,4 @@
 <li>
     <a href="/exam/{{ exam_id }}/">Exam page</a>
 </li>
+{% endblock %}

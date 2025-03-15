@@ -4,7 +4,8 @@ from api.models import (
     Question,
     Answer,
     UserQuestionResult,
-    ResultSession
+    ResultSession,
+    UserPreference
 )
 
 admin.site.register(Exam)
@@ -12,3 +13,4 @@ admin.site.register(Question)
 admin.site.register(Answer)
 admin.site.register(ResultSession)
 admin.site.register(UserQuestionResult)
+admin.site.register(UserPreference)
