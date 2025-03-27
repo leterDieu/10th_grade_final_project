@@ -61,10 +61,22 @@ def get_exam_stats(uqr: UserQuestionResult) -> dict[str, list[dict[str, Any]]]:
         'popularity': exam_stats_by_popularity_readable,
     }
 
-def theme_is_light(user):
-    return UserPreference.objects.get(user=user).theme_is_light
+def theme_is_light(request):
+    try:
+        return UserPreference.objects.get(user=request.user).theme_is_light
+    except:
+        return True
+        
+def index(request):
+    template = loader.get_template("training/index.html")
+    context = {
+        'theme_is_light': theme_is_light(request)
+    }
 
-def index(request, top_n: int = 5, latest_n: int = 10):
+    return HttpResponse(template.render(context, request))
+
+
+def exams_page(request, top_n: int = 5, latest_n: int = 10):
     uqr = UserQuestionResult.objects.all().\
     select_related('answer').select_related('exam')
     uqr = uqr.annotate(is_correct_int = Cast('answer__is_correct', IntegerField()))
@@ -78,7 +90,7 @@ def index(request, top_n: int = 5, latest_n: int = 10):
 
     latest_exams = Exam.objects.all().order_by('pud_date')[:latest_n]
 
-    template = loader.get_template("training/index.html")
+    template = loader.get_template("training/exams_page.html")
     context = {
         'exam_stats_overall_accuracy': exam_stats_overall['accuracy'][:top_n],
         'exam_stats_overall_popularity': exam_stats_overall['popularity'][:top_n],
@@ -87,7 +99,7 @@ def index(request, top_n: int = 5, latest_n: int = 10):
         'top_n': top_n,
         'latest_exams': latest_exams[::-1],
         'latest_n': latest_n,
-        'theme_is_light': theme_is_light(request.user)
+        'theme_is_light': theme_is_light(request)
     }
 
     return HttpResponse(template.render(context, request))
@@ -99,7 +111,7 @@ def exam(request, exam_id):
     context = {
         'name': exam_object.name,
         'description': exam_object.description,
-        'theme_is_light': theme_is_light(request.user)
+        'theme_is_light': theme_is_light(request)
     }
 
     return HttpResponse(template.render(context, request))
@@ -160,7 +172,7 @@ def exam_content(request, exam_id):
         template = loader.get_template("training/exam_content.html")
         context = {
             'formset': formset,
-            'theme_is_light': theme_is_light(request.user)
+            'theme_is_light': theme_is_light(request)
         }
 
         return HttpResponse(template.render(context, request))
@@ -205,7 +217,7 @@ def exam_result(request, result_session_id):
             'df': df,
             'df_total': df_total,
             'exam_id': uqr_objects[0].exam.id,
-            'theme_is_light': theme_is_light(request.user)
+            'theme_is_light': theme_is_light(request)
         }
 
         return HttpResponse(template.render(context, request))
