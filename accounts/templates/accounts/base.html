@@ -1,0 +1,28 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    <head>
+        <title>SBEPS project</title>
+        <link rel="stylesheet" href="{% static 'training/style.css' %}" />
+    </head>
+
+    {% if theme_is_light %}
+    <body class="light-theme">
+    {% else %}
+    <body class="dark-theme">
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
+        {% block content %}{% endblock content %}
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign up</a>
+    {% endif %}
+    </body>
+</html>
