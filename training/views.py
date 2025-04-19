@@ -23,7 +23,7 @@ from django.forms import formset_factory
 import pandas as pd
 from typing import Any
 from utilities.exams import get_exam_stats
-from utilities.accounts import theme_is_light
+from utilities.accounts import get_theme
 
 
 def index(request):
@@ -31,7 +31,7 @@ def index(request):
 
     template = loader.get_template("training/index.html")
     context = {
-        'theme_is_light': theme_is_light(request)
+        'theme': get_theme(request)
     }
 
     return HttpResponse(template.render(context, request))
@@ -65,7 +65,7 @@ def exams_page(request, top_n: int = 5, latest_n: int = 10):
         'top_n': top_n,
         'latest_exams': latest_exams[::-1],
         'latest_n': latest_n,
-        'theme_is_light': theme_is_light(request)
+        'theme': get_theme(request)
     }
 
     return HttpResponse(template.render(context, request))
@@ -80,7 +80,7 @@ def exam(request, exam_id):
     context = {
         'name': exam_object.name,
         'description': exam_object.description,
-        'theme_is_light': theme_is_light(request)
+        'theme': get_theme(request)
     }
 
     return HttpResponse(template.render(context, request))
@@ -145,7 +145,7 @@ def exam_content(request, exam_id):
         template = loader.get_template("training/exam_content.html")
         context = {
             'formset': formset,
-            'theme_is_light': theme_is_light(request)
+            'theme': get_theme(request)
         }
 
         return HttpResponse(template.render(context, request))
@@ -198,7 +198,7 @@ def exam_result(request, result_session_id):
             'df': df,
             'df_total': df_total,
             'exam_id': uqr_objects[0].exam.id,
-            'theme_is_light': theme_is_light(request)
+            'theme': get_theme(request)
         }
 
         return HttpResponse(template.render(context, request))

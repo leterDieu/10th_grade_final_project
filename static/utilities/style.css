@@ -1,0 +1,78 @@
+@import url("https://cdn.jsdelivr.net/npm/@catppuccin/palette/css/catppuccin.css");
+
+.latte {
+    color: var(--ctp-latte-text);
+    background-color: var(--ctp-latte-base);
+}
+
+.mocha {
+    color: var(--ctp-mocha-text);
+    background-color: var(--ctp-mocha-base);
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+.unauthinticated {
+    padding: 80px;
+    text-align: center;
+}
+
+.unauthinticated h1 {
+    font-size: 40px;
+}
+
+.unauthinticated a {
+    font-size: 30px;
+}
+
+.latte a {
+    color: var(--ctp-latte-blue);
+}
+
+.latte a:visited {
+    color: var(--ctp-latte-mauve);
+}
+
+.latte a:active {
+    color: var(--ctp-latte-blue);
+}
+
+.latte a:hover {
+    color: var(--ctp-latte-lavender);
+}
+
+.navbar {
+    overflow: hidden;
+}
+
+.latte .navbar {
+    background-color: var(--ctp-latte-mantle);
+}
+
+.navbar a,
+.navbar button {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar form.right {
+    float: right;
+    margin-bottom: 0px;
+    padding: 0px;
+    display: inline;
+}
+
+.latte .navbar a:hover,
+.latte .navbar button:hover {
+    background-color: var(--ctp-latte-crust);
+}
+
+.navbar button {
+    border: none;
+}

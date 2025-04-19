@@ -4,25 +4,43 @@
 <html>
     <head>
         <title>SBEPS project</title>
-        <link rel="stylesheet" href="{% static 'training/style.css' %}" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'utilities/style.css' %}" />
     </head>
 
-    {% if theme_is_light %}
-    <body class="light-theme">
+    {% if theme == 'latte' %}
+    <body class="latte">
     {% else %}
-    <body class="dark-theme">
+    <body class="mocha">
     {% endif %}
 
     {% if user.is_authenticated %}
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log Out</button>
-        </form>
+    
+        {% block header %}{% endblock header %}
+        
+        <div class="navbar">
+            <a href="/">Home</a>
+            <a href="/exam">Exams</a>
+            <a href="/accounts/preferences">Preferences</a>
+            <form action="{% url 'logout' %}" method="post" class="right">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
+        
         {% block content %}{% endblock content %}
+
+
     {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Log In</a>
-        <a href="{% url 'signup' %}">Sign up</a>
+        <div class="unauthinticated">
+            <h1>You are not logged in</h1>
+            <a href="{% url 'login' %}">Log in</a>
+            <br>
+            <a href="{% url 'signup' %}">Sign up</a>
+        </div>
     {% endif %}
+
+
     </body>
 </html>

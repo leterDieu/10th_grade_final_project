@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.template import loader
 from django.views.generic.detail import Http404
-from training.views import theme_is_light
+from training.views import get_theme
 from accounts.forms import ThemeForm
 from api.models import UserPreference
 from django.http import HttpResponse, HttpResponseRedirect
@@ -26,15 +26,15 @@ def preferences(request):
     if request.method == 'POST':
         form = ThemeForm(request.POST)
         if form.is_valid():
-            theme_is_light_response = form.cleaned_data['theme_is_light']
+            theme_response = form.cleaned_data['theme']
             pref = UserPreference.objects.get(user=request.user)
-            pref.theme_is_light = theme_is_light_response
+            pref.theme = theme_response
             pref.save()
             return HttpResponseRedirect("/")
     else:
         template = loader.get_template("accounts/preferences.html")
         context = {
-            'theme_is_light': theme_is_light(request),
+            'theme': get_theme(request),
             'form': ThemeForm(),
         }
 

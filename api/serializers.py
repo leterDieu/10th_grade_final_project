@@ -103,4 +103,4 @@ class UserPreferenceSerializer(serializers.ModelSerializer):
         """Meta"""
 
         model = UserPreference
-        fields = ['id', 'user', 'theme_is_light']
+        fields = ['id', 'user', 'theme']

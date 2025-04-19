@@ -60,7 +60,7 @@ class UserPreference(models.Model):
     """User's preferences such as theme model"""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    theme_is_light = models.BooleanField(default=False)
+    theme = models.CharField(max_length=16)
 
     def __str__(self) -> str:
-        return str(self.theme_is_light)
+        return str(self.theme)
