@@ -1,3 +1,6 @@
+"""Configuration for admin page"""
+
+
 from django.contrib import admin
 from api.models import (
     Exam,
@@ -5,8 +8,9 @@ from api.models import (
     Answer,
     UserQuestionResult,
     ResultSession,
-    UserPreference
+    UserPreference,
 )
+
 
 admin.site.register(Exam)
 admin.site.register(Question)

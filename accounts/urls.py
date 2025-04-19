@@ -1,5 +1,7 @@
-from django.urls import path
+"""Urls for accounts app"""
 
+
+from django.urls import path
 from accounts.views import SignUpView, preferences
 
 

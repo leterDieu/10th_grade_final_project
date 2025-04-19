@@ -3,3 +3,4 @@ training_db
 **/__pycache__/
 **/dist
 start.sh
+style-check.sh

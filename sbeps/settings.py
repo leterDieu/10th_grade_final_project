@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", '*')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
 
 
 # Application definition
@@ -64,7 +64,11 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'training', 'templates', 'training'),
-            os.path.join(BASE_DIR, 'sbeps', 'templates', 'registration')
+            os.path.join(BASE_DIR, 'sbeps', 'templates', 'registration'),
+            os.path.join(BASE_DIR, 'accounts', 'templates', 'registration'),
+            os.path.join(BASE_DIR, 'accounts', 'templates', 'accounts'),
+            os.path.join(BASE_DIR, 'utilities', 'templates', 'utilities'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -103,16 +107,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth' +
+        '.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth' +
+        '.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth' +
+        '.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth' +
+        '.password_validation.NumericPasswordValidator',
     },
 ]
 
