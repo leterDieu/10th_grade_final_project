@@ -1,0 +1,57 @@
+/* body (general) */
+.macchiato {
+    color: var(--ctp-macchiato-text);
+    background-color: var(--ctp-macchiato-base);
+}
+
+/* links */
+.macchiato a {
+    color: var(--ctp-macchiato-blue);
+}
+
+.macchiato a:visited {
+    color: var(--ctp-macchiato-blue);
+}
+
+.macchiato a:active {
+    color: var(--ctp-macchiato-sky);
+}
+
+.macchiato a:hover {
+    color: var(--ctp-macchiato-sky);
+}
+
+/* navbar */
+.macchiato .navbar {
+    background-color: var(--ctp-macchiato-mantle);
+}
+
+.macchiato .navbar a:hover {
+    background-color: var(--ctp-macchiato-crust);
+}
+
+.macchiato .exam-list li {
+    background-color: var(--ctp-macchiato-mantle);
+}
+
+.macchiato .exam-list li:hover {
+    background-color: var(--ctp-macchiato-crust);
+}
+
+.macchiato .exam-info p,
+.macchiato .exam-info a {
+    background-color: var(--ctp-macchiato-mantle);
+}
+
+.macchiato .exam-info p:hover,
+.macchiato .exam-info a:hover {
+    background-color: var(--ctp-macchiato-crust);
+}
+
+.macchiato .question-form-field {
+    background-color: var(--ctp-macchiato-mantle);
+}
+
+.macchiato .question-form-field:after {
+    background-color: var(--ctp-macchiato-crust);
+}

@@ -1,0 +1,57 @@
+/* body (general) */
+.mocha {
+    color: var(--ctp-mocha-text);
+    background-color: var(--ctp-mocha-base);
+}
+
+/* links */
+.mocha a {
+    color: var(--ctp-mocha-blue);
+}
+
+.mocha a:visited {
+    color: var(--ctp-mocha-blue);
+}
+
+.mocha a:active {
+    color: var(--ctp-mocha-sky);
+}
+
+.mocha a:hover {
+    color: var(--ctp-mocha-sky);
+}
+
+/* navbar */
+.mocha .navbar {
+    background-color: var(--ctp-mocha-mantle);
+}
+
+.mocha .navbar a:hover {
+    background-color: var(--ctp-mocha-crust);
+}
+
+.mocha .exam-list li {
+    background-color: var(--ctp-mocha-mantle);
+}
+
+.mocha .exam-list li:hover {
+    background-color: var(--ctp-mocha-crust);
+}
+
+.mocha .exam-info p,
+.mocha .exam-info a {
+    background-color: var(--ctp-mocha-mantle);
+}
+
+.mocha .exam-info p:hover,
+.mocha .exam-info a:hover {
+    background-color: var(--ctp-mocha-crust);
+}
+
+.mocha .question-form-field {
+    background-color: var(--ctp-mocha-mantle);
+}
+
+.mocha .question-form-field:after {
+    background-color: var(--ctp-mocha-crust);
+}

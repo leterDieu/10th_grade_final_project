@@ -1,0 +1,57 @@
+/* body (general) */
+.frappe {
+    color: var(--ctp-frappe-text);
+    background-color: var(--ctp-frappe-base);
+}
+
+/* links */
+.frappe a {
+    color: var(--ctp-frappe-blue);
+}
+
+.frappe a:visited {
+    color: var(--ctp-frappe-blue);
+}
+
+.frappe a:active {
+    color: var(--ctp-frappe-sky);
+}
+
+.frappe a:hover {
+    color: var(--ctp-frappe-sky);
+}
+
+/* navbar */
+.frappe .navbar {
+    background-color: var(--ctp-frappe-mantle);
+}
+
+.frappe .navbar a:hover {
+    background-color: var(--ctp-frappe-crust);
+}
+
+.frappe .exam-list li {
+    background-color: var(--ctp-frappe-mantle);
+}
+
+.frappe .exam-list li:hover {
+    background-color: var(--ctp-frappe-crust);
+}
+
+.frappe .exam-info p,
+.frappe .exam-info a {
+    background-color: var(--ctp-frappe-mantle);
+}
+
+.frappe .exam-info p:hover,
+.frappe .exam-info a:hover {
+    background-color: var(--ctp-frappe-crust);
+}
+
+.frappe .question-form-field {
+    background-color: var(--ctp-frappe-mantle);
+}
+
+.frappe .question-form-field:after {
+    background-color: var(--ctp-frappe-crust);
+}

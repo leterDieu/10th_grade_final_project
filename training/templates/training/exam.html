@@ -1,7 +1,14 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block header %}
+<div class="header">
+    <h1>Exam info</h1>
+</div>
+{% endblock %} {% block content %}
 
-<p>Name: {{name}}</p>
-<p>Description: {{description}}</p>
-<a href="content/">Start</a>
+<div class="exam-info">
+    <p>Name: {{name}}</p>
+    <p>Description: {{description}}</p>
+    <p>Published Date: {{pub_date}}</p>
+    <a href="content/">Start</a>
+</div>
 
 {% endblock %}

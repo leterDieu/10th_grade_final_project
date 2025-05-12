@@ -6,6 +6,8 @@ from api.models import UserQuestionResult
 
 
 def get_exam_stats(uqr: UserQuestionResult) -> dict[str, list[dict[str, Any]]]:
+    """Return a dictionary of exam statistics."""
+
     exam_stats = {}
     for el in uqr:
         if el.exam_id not in exam_stats:

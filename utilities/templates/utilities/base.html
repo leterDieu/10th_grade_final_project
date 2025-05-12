@@ -11,6 +11,10 @@
 
     {% if theme == 'latte' %}
     <body class="latte">
+    {% elif theme == 'frappe' %}
+    <body class="frappe">
+    {% elif theme == 'macchiato' %}
+    <body class="macchiato">
     {% else %}
     <body class="mocha">
     {% endif %}
@@ -23,10 +27,7 @@
             <a href="/">Home</a>
             <a href="/exam">Exams</a>
             <a href="/accounts/preferences">Preferences</a>
-            <form action="{% url 'logout' %}" method="post" class="right">
-                {% csrf_token %}
-                <button type="submit">Log Out</button>
-            </form>
+            <a href="{% url 'logout_redirect' %}" class="right">Log out</a>
         </div>
         
         {% block content %}{% endblock content %}

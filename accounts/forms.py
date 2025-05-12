@@ -12,6 +12,8 @@ class ThemeForm(forms.Form):
     theme = forms.ChoiceField(
         choices=[
             ('latte', 'Latte'),
-            ('mocha', 'Mocha')
+            ('frappe', 'Frappé'),
+            ('macchiato', 'Macchiato'),
+            ('mocha', 'Mocha'),
         ]
     )

@@ -1,0 +1,57 @@
+/* body (general) */
+.latte {
+    color: var(--ctp-latte-text);
+    background-color: var(--ctp-latte-base);
+}
+
+/* links */
+.latte a {
+    color: var(--ctp-latte-blue);
+}
+
+.latte a:visited {
+    color: var(--ctp-latte-blue);
+}
+
+.latte a:active {
+    color: var(--ctp-latte-sky);
+}
+
+.latte a:hover {
+    color: var(--ctp-latte-sky);
+}
+
+/* navbar */
+.latte .navbar {
+    background-color: var(--ctp-latte-mantle);
+}
+
+.latte .navbar a:hover {
+    background-color: var(--ctp-latte-crust);
+}
+
+.latte .exam-list li {
+    background-color: var(--ctp-latte-mantle);
+}
+
+.latte .exam-list li:hover {
+    background-color: var(--ctp-latte-crust);
+}
+
+.latte .exam-info p,
+.latte .exam-info a {
+    background-color: var(--ctp-latte-mantle);
+}
+
+.latte .exam-info p:hover,
+.latte .exam-info a:hover {
+    background-color: var(--ctp-latte-crust);
+}
+
+.latte .question-form-field {
+    background-color: var(--ctp-latte-mantle);
+}
+
+.latte .question-form-field:after {
+    background-color: var(--ctp-latte-crust);
+}

@@ -53,7 +53,11 @@ def exams_page(request, top_n: int = 5, latest_n: int = 10):
     exam_stats_overall = get_exam_stats(uqr)
     exam_stats_users = get_exam_stats(uqr_users)
 
-    latest_exams = Exam.objects.all().order_by('pud_date')[:latest_n]
+    latest_exams = Exam.objects.all().order_by('pub_date')[:latest_n:-1]
+    latest_exams = [
+        {'number': i + 1,
+         'object': exam} for i, exam in enumerate(latest_exams)
+        ][::-1]
 
     template = loader.get_template("training/exams_page.html")
     context = {
@@ -80,6 +84,7 @@ def exam(request, exam_id):
     context = {
         'name': exam_object.name,
         'description': exam_object.description,
+        'pub_date': exam_object.pub_date,
         'theme': get_theme(request)
     }
 

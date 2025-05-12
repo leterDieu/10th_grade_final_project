@@ -30,7 +30,7 @@ class QuestionForm(forms.Form):
         ]
 
         self.fields['answer'] = forms.ChoiceField(
-            widget=forms.RadioSelect(),
+            widget=forms.RadioSelect(attrs={'class': 'question-form-field'}),
             choices=answer_choices,
             label=answer_objects[0].question.text
         )

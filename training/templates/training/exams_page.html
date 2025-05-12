@@ -1,49 +1,62 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block header %}
+<div class="header">
+    <h1>Exams stats</h1>
+</div>
+{% endblock %} {% block content %}
 
-<div>
+<div class="exam-list">
     {% if exam_stats_overall_accuracy %}
-    <ul>
-        <b>Top {{ top_n }} exams by accuracy overall</b>
+    <b>Top {{ top_n }} exams by accuracy overall</b>
+    <ul class="no-bullets">
         {% for exam in exam_stats_overall_accuracy %}
         <li>
-            {{ exam.number }}:
+            {{ exam.number }}.
             <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
             ({{ exam.accuracy }}% accuracy)
         </li>
         {% endfor %}
+    </ul>
 
-        <b>Top {{ top_n }} exams by popularity overall</b>
+    <b>Top {{ top_n }} exams by popularity overall</b>
+    <ul class="no-bullets">
         {% for exam in exam_stats_overall_popularity %}
         <li>
-            {{ exam.number }}:
+            {{ exam.number }}.
             <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
             ({{ exam.answers }} answers)
         </li>
         {% endfor %}
+    </ul>
 
-        <b>Top {{ top_n }} exams by accuracy personal</b>
+    <b>Top {{ top_n }} exams by accuracy personal</b>
+    <ul class="no-bullets">
         {% for exam in exam_stats_users_accuracy %}
         <li>
-            {{ exam.number }}:
+            {{ exam.number }}.
             <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
             ({{ exam.accuracy }}% accuracy)
         </li>
         {% endfor %}
+    </ul>
 
-        <b>Top {{ top_n }} exams by popularity personal</b>
+    <b>Top {{ top_n }} exams by popularity personal</b>
+    <ul class="no-bullets">
         {% for exam in exam_stats_users_popularity %}
         <li>
-            {{ exam.number }}:
+            {{ exam.number }}.
             <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
             ({{ exam.answers }} answers)
         </li>
         {% endfor %}
+    </ul>
 
-        <b>{{ latest_n }} latest exams</b>
+    <b>{{ latest_n }} latest exams</b>
+    <ul class="no-bullets">
         {% for exam in latest_exams %}
         <li>
-            <a href="/exam/{{ exam.id }}/">{{ exam.name }}</a>
-            (published on {{ exam.pud_date }})
+            {{ exam.number }}.
+            <a href="/exam/{{ exam.object.id }}/">{{ exam.object.name }}</a>
+            (published on {{ exam.object.pub_date }})
         </li>
         {% endfor %}
     </ul>
