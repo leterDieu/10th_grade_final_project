@@ -60,7 +60,7 @@ class UserPreference(models.Model):
     """User's preferences such as theme model"""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    theme = models.CharField(max_length=16)
+    theme = models.CharField(max_length=16, default='latte')
 
     def __str__(self) -> str:
         return str(self.theme)

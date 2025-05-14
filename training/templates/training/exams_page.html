@@ -50,6 +50,12 @@
         {% endfor %}
     </ul>
 
+    {% else %}
+
+    {% endif %}
+    
+    {% if latest_exams %}
+    
     <b>{{ latest_n }} latest exams</b>
     <ul class="no-bullets">
         {% for exam in latest_exams %}
@@ -60,6 +66,7 @@
         </li>
         {% endfor %}
     </ul>
+    
     {% else %}
     <p>No exams.</p>
     {% endif %}

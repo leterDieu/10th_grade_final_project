@@ -38,6 +38,11 @@ def preferences(request):
         form = ThemeForm(request.POST)
         if form.is_valid():
             theme_response = form.cleaned_data['theme']
+            if not UserPreference.objects\
+            .filter(user=request.user).exists():
+                pref = UserPreference(user=request.user)
+                pref.save()
+
             pref = UserPreference.objects.get(user=request.user)
             pref.theme = theme_response
             pref.save()
