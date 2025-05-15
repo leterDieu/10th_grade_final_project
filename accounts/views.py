@@ -11,11 +11,8 @@ from training.views import get_theme
 from accounts.forms import ThemeForm
 from api.models import UserPreference
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views.decorators.csrf import csrf_protect
-from django.utils.decorators import method_decorator
 
 
-@method_decorator(csrf_protect, name='dispatch')
 class SignUpView(CreateView):
     """Sign up view"""
 
@@ -34,7 +31,6 @@ class LogoutRedirectView(CreateView):
         return HttpResponseRedirect("/")
 
 
-@csrf_protect
 def preferences(request):
     """Preferences view"""
 
